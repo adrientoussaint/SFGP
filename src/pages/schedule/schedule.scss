@@ -1,0 +1,20 @@
+$categories: (
+ theme1: #AC282B,
+ theme2: #8E8D93,
+ theme3: #FE4C52,
+ theme4: #FD8B2D,
+ theme5: #FED035,
+);
+
+@function auxiliary-categories() {
+  @return map-remove($categories);
+}
+
+page-schedule {
+  @each $track, $value in auxiliary-categories() {
+   ion-item-sliding[track=#{$track}] ion-label {
+     border-left: 2px solid $value;
+     padding-left: 10px;
+   }
+  }
+}
