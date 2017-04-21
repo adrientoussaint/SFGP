@@ -68,8 +68,8 @@ export class ConferenceData {
       let day = data.schedule[dayIndex];
       day.shownSessions = 0;
     
-      let room = day.groups[roomIndex];
-      room.shownSessions = 0;
+     /* let room = day.groups[roomIndex];
+      room.shownSessions = 0;*/
       
       queryText = queryText.toLowerCase().replace(/,|\.|-/g, ' ');
       let queryWords = queryText.split(' ').filter(w => !!w.trim().length);
@@ -90,11 +90,11 @@ export class ConferenceData {
 
       });
       
-      room.forEach((rom: any) => {
-        rom.hide = true;
+     /* //room.forEach((rom: any) => {
+        //rom.hide = true;
         
-        rom.sessions.forEach((session: any) => {
-          this.filterSession(session, queryWords, excludeTracks, segment);
+        //rom.sessions.forEach((session: any) => {
+         // this.filterSession(session, queryWords, excludeTracks, segment);
 
           if (!session.hide) {
             // if this session is not hidden then this group should show
@@ -102,7 +102,7 @@ export class ConferenceData {
             room.shownSessions++;
           }
         });
-      });
+      });*/
 
       return day;
       
