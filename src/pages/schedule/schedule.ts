@@ -27,7 +27,7 @@ export class SchedulePage {
   @ViewChild('scheduleList', { read: List }) scheduleList: List;
 
   dayIndex = 0;
-  roomIndex = 0;
+  roomIndex: any = 0;
   queryText = '';
   segment = 'all';
   excludeTracks: any = [];
@@ -65,8 +65,8 @@ export class SchedulePage {
     this.updateSchedule();
   }
   
-  changeRoomIndex(room:any){
-    this.roomIndex = room;
+  changeRoomIndex(place:any){
+    this.roomIndex = place;
     this.updateSchedule();
   }
   

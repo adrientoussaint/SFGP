@@ -66,14 +66,11 @@ export class ConferenceData {
   getTimeline(dayIndex: number, roomIndex: number, queryText = '', excludeTracks: any[] = [], segment = 'all') {
     return this.load().map((data: any) => {
       let day = data.schedule[dayIndex];
-      day.shownSessions = 0;
-    
-     /* let room = day.groups[roomIndex];
-      room.shownSessions = 0;*/
-      
+      day.shownSessions = 0;    
+        
       queryText = queryText.toLowerCase().replace(/,|\.|-/g, ' ');
       let queryWords = queryText.split(' ').filter(w => !!w.trim().length);
-
+      
       day.groups.forEach((group: any) => {
         group.hide = true;
 
@@ -89,26 +86,10 @@ export class ConferenceData {
         });
 
       });
-      
-     /* //room.forEach((rom: any) => {
-        //rom.hide = true;
-        
-        //rom.sessions.forEach((session: any) => {
-         // this.filterSession(session, queryWords, excludeTracks, segment);
-
-          if (!session.hide) {
-            // if this session is not hidden then this group should show
-            rom.hide = false;
-            room.shownSessions++;
-          }
-        });
-      });*/
-
-      return day;
-      
+      console.log(day);
+      return day;     
     });
-  }
-
+  } 
   filterSession(session: any, queryWords: string[], excludeTracks: any[], segment: string) {
 
     let matchesQueryText = false;

@@ -46,59 +46,59 @@
     <button ion-button icon value="s1" checked (click)="changeRoomIndex(0)">
       Salle 1
     </button>    
-    <button ion-button icon value="s2" checked (click)="changeRoomIndex(1)">
+    <button ion-button icon value="s2" (click)="changeRoomIndex(1)">
       Salle 2
     </button>
-    <button ion-button icon value="s3" checked (click)="changeRoomIndex(2)">
+    <button ion-button icon value="s3" (click)="changeRoomIndex(2)">
       Salle 3
     </button>    
-    <button ion-button icon value="s4" checked (click)="changeRoomIndex(3)">
+    <button ion-button icon value="s4" (click)="changeRoomIndex(3)">
       Salle 4
     </button>
-    <button ion-button icon value="s5" checked (click)="changeRoomIndex(4)">
+    <button ion-button icon value="s5" (click)="changeRoomIndex(4)">
       Salle 5
     </button>    
-    <button ion-button icon value="s6" checked (click)="changeRoomIndex(5)">
+    <button ion-button icon value="s6" (click)="changeRoomIndex(5)">
       Salle 6
     </button>
-    <button ion-button icon value="s7" checked (click)="changeRoomIndex(6)">
+    <button ion-button icon value="s7" (click)="changeRoomIndex(6)">
       Salle 7
     </button>    
-    <button ion-button icon value="s8" checked (click)="changeRoomIndex(7)">
+    <button ion-button icon value="s8" (click)="changeRoomIndex(7)">
       Salle 8
     </button>
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
-    <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
-
-      <ion-item-divider sticky>
-        <ion-label>
-          {{group.time}}
-        </ion-label>
-      </ion-item-divider>
-
-      <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
-
-        <button ion-item (click)="goToSessionDetail(session)">
-          <h3>{{session.name}}</h3>
-          <p>
-            {{session.timeStart}} &mdash;
-            {{session.timeEnd}}:
-            {{session.location}}
-          </p>
-        </button>
-
-        <ion-item-options>
-          <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
-            Favorite
-          </button>
-          <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
-            Remove
-          </button>
-        </ion-item-options>
-
-      </ion-item-sliding>
-
+    <ion-item-group *ngFor="let group of groups; let i = index" [hidden]="group.hide">
+			<div *ngIf="i===roomIndex">
+				<ion-item-divider sticky>
+					<ion-label>
+						{{group.time}}
+					</ion-label>
+				</ion-item-divider>
+	
+				<ion-item-sliding *ngFor="let session of group.sessions"  #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
+	
+					<button ion-item (click)="goToSessionDetail(session)">
+						<h3>{{session.name}}</h3>
+						<p>
+							{{session.timeStart}} &mdash;
+							{{session.timeEnd}}:
+							{{session.location}}
+						</p>
+					</button>
+	
+					<ion-item-options>
+						<button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
+							Favorite
+						</button>
+						<button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
+							Remove
+						</button>
+					</ion-item-options>
+	
+				</ion-item-sliding>
+      </div>
     </ion-item-group>
 
   </ion-list>
