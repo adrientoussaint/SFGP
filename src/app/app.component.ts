@@ -11,7 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
-//import { AbstractPage } from '../pages/abstract/abstract';
+//import { QrPage } from '../pages/qr/qr';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -41,9 +41,9 @@ export class ConferenceApp {
   appPages: PageInterface[] = [
     { title: 'Emploi du temps', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
-   // { title: 'Abstract', name: 'TabsPage', component: TabsPage, tabComponent: AbstractPage, index: 2, icon: 'albums' },
-    { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 3, icon: 'map' },
-    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 4, icon: 'information-circle' }
+    { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
+    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' },
+    //{ title: 'Scanner QRCode', name: 'TabsPage', component: TabsPage, tabComponent: QrPage, index: 4, icon: 'camera' }
   ];  
   rootPage: any;
 

@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { AlertController, App, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
+import { ActionSheet, ActionSheetController, AlertController, App, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
 
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner'
 /*
   To learn how to use third party libs in an
   Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
@@ -25,7 +26,9 @@ export class SchedulePage {
   // with the variable #scheduleList, `read: List` tells it to return
   // the List and not a reference to the element
   @ViewChild('scheduleList', { read: List }) scheduleList: List;
-
+  actionSheet: ActionSheet;
+  options: BarcodeScannerOptions;
+  
   dayIndex = 0;
   roomIndex: any = 0;
   queryText = '';
@@ -43,6 +46,8 @@ export class SchedulePage {
     public navCtrl: NavController,
     public confData: ConferenceData,
     public user: UserData,
+    private barcode: BarcodeScanner,
+    public actionSheetCtrl: ActionSheetController
   ) {}
 
   ionViewDidLoad() {
@@ -59,7 +64,16 @@ export class SchedulePage {
       this.groups = data.groups;
     });
   }
-
+    async scanBarcode(){
+      const results = await this.barcode.scan();
+      alert(results);
+     /* function (results) {
+          alert("We got a barcode\n" +
+                "Result: " + results.text + "\n" +
+                "Format: " + results.format + "\n" +
+                "Cancelled: " + results.cancelled);
+      }*/
+  }
   changeDayIndex(index: any){
     this.dayIndex = index;
     this.updateSchedule();

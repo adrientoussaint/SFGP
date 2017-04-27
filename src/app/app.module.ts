@@ -6,14 +6,13 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 import { IonicStorageModule } from '@ionic/storage';
 
 import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { PopoverPage } from '../pages/about-popover/about-popover';
-//import { AbstractPage } from '../pages/abstract/abstract';
+//import { QrPage } from '../pages/qr/qr';
 import { MapPage } from '../pages/map/map';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
@@ -33,9 +32,8 @@ import { UserData } from '../providers/user-data';
   declarations: [
     ConferenceApp,
     AboutPage,
-    //AbstractPage,
+   // QrPage,
     MapPage,
-    PopoverPage,
     SchedulePage,
     ScheduleFilterPage,
     SessionDetailPage,
@@ -61,7 +59,7 @@ import { UserData } from '../providers/user-data';
         { component: AboutPage, name: 'About', segment: 'about' },
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
-        //{ component: AbstractPage, name: 'AbstractPage', segment: 'abstract' }
+        //{ component: QrPage, name: 'Qr', segment: 'qr' }
       ]
     }),
     IonicStorageModule.forRoot()
@@ -70,9 +68,8 @@ import { UserData } from '../providers/user-data';
   entryComponents: [
     ConferenceApp,
     AboutPage,
-    //AbstractPage,
+    //QrPage,
     MapPage,
-    PopoverPage,
     SchedulePage,
     ScheduleFilterPage,
     SessionDetailPage,
@@ -87,7 +84,8 @@ import { UserData } from '../providers/user-data';
     ConferenceData,
     UserData,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    BarcodeScanner
   ]
 })
 export class AppModule { }

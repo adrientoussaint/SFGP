@@ -5,7 +5,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { ConferenceData } from '../../providers/conference-data';
 
-
 @Component({
   selector: 'page-speaker-list',
   templateUrl: 'speaker-list.html'
@@ -31,7 +30,7 @@ export class SpeakerListPage {
     let mode = this.config.get('mode');
 
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Contact ' + speaker.name,
+      title: 'Contacter ' + speaker.name,
       buttons: [
         {
           text: `${speaker.email} `,
