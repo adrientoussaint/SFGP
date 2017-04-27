@@ -7,15 +7,23 @@
 <ion-content padding>
   <h1>{{session.name}}</h1>
 
-  <h4 *ngFor="let speaker of session.speakers">
-    {{speaker.name}}
-  </h4>
-
-  <p>
-    {{session.timeStart}} - {{session.timeEnd}}
-  </p>
-
-  <p>{{session.location}}</p>
-
+  <h2><ion-icon name="megaphone"></ion-icon>  
+     {{session.speakerNames}}  
+  </h2>
+  <h5><ion-icon name="information-circle"></ion-icon> Informations et Horraires :</h5>
+    <p>
+      {{session.type}} - {{session.location}}
+    </p>
+    <p>
+      {{session.timeStart}} - {{session.timeEnd}}
+    </p>    
+    
+  <h5><ion-icon name="medical"></ion-icon> Mots-clés :</h5>
   <p>{{session.description}}</p>
+  
+  <a href="http://www.sfgp2017-nancy.com/_Abstracts/{{session.id}}.pdf">
+    <h5><ion-icon name="albums"></ion-icon>
+        Abstract</h5>
+  </a>
+  
 </ion-content>

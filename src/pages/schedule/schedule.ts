@@ -91,20 +91,22 @@ export class SchedulePage {
       session: sessionData
     });
   }
+  
 
+  
   addFavorite(slidingItem: ItemSliding, sessionData: any) {
 
     if (this.user.hasFavorite(sessionData.name)) {
       // woops, they already favorited it! What shall we do!?
       // prompt them to remove it
-      this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
+      this.removeFavorite(slidingItem, sessionData, 'Cette session est déjà dans vos Favoris');
     } else {
       // remember this session as a user favorite
       this.user.addFavorite(sessionData.name);
 
       // create an alert instance
       let alert = this.alertCtrl.create({
-        title: 'Favorite Added',
+        title: 'Favoris ajouté',
         buttons: [{
           text: 'OK',
           handler: () => {
@@ -121,11 +123,11 @@ export class SchedulePage {
 
   removeFavorite(slidingItem: ItemSliding, sessionData: any, title: string) {
     let alert = this.alertCtrl.create({
-      title: title,
-      message: 'Would you like to remove this session from your favorites?',
+      title: 'Retirer des Favoris',
+      message: 'Voulez-vous retirer cette session de vos favoris ?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Annuler',
           handler: () => {
             // they clicked the cancel button, do not remove the session
             // close the sliding item and hide the option buttons
@@ -133,7 +135,7 @@ export class SchedulePage {
           }
         },
         {
-          text: 'Remove',
+          text: 'Retirer',
           handler: () => {
             // they want to remove this session from their favorites
             this.user.removeFavorite(sessionData.name);

@@ -13,7 +13,7 @@ import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { PopoverPage } from '../pages/about-popover/about-popover';
-import { AbstractPage } from '../pages/abstract/abstract';
+//import { AbstractPage } from '../pages/abstract/abstract';
 import { MapPage } from '../pages/map/map';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
@@ -33,7 +33,7 @@ import { UserData } from '../providers/user-data';
   declarations: [
     ConferenceApp,
     AboutPage,
-    AbstractPage,
+    //AbstractPage,
     MapPage,
     PopoverPage,
     SchedulePage,
@@ -61,7 +61,7 @@ import { UserData } from '../providers/user-data';
         { component: AboutPage, name: 'About', segment: 'about' },
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
-        { component: AbstractPage, name: 'AbstractPage', segment: 'abstract' }
+        //{ component: AbstractPage, name: 'AbstractPage', segment: 'abstract' }
       ]
     }),
     IonicStorageModule.forRoot()
@@ -70,7 +70,7 @@ import { UserData } from '../providers/user-data';
   entryComponents: [
     ConferenceApp,
     AboutPage,
-    AbstractPage,
+    //AbstractPage,
     MapPage,
     PopoverPage,
     SchedulePage,

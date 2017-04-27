@@ -19,7 +19,7 @@ export class ConferenceData {
     if (this.data) {
       return Observable.of(this.data);
     } else {
-      return this.http.get('https://testio-e93cf.firebaseio.com/.json')
+      return this.http.get('https://cdur-6ec32.firebaseio.com/.json')
         .map(this.processData, this);
     }
   }
@@ -38,16 +38,6 @@ export class ConferenceData {
         // loop through each session in the timeline group
         group.sessions.forEach((session: any) => {
           session.speakers = [];
-          if (session.speakerNames) {
-            session.speakerNames.forEach((speakerName: any) => {
-              let speaker = this.data.speakers.find((s: any) => s.name === speakerName);
-              if (speaker) {
-                session.speakers.push(speaker);
-                speaker.sessions = speaker.sessions || [];
-                speaker.sessions.push(session);
-              }
-            });
-          }
 
           if (session.tracks) {
             session.tracks.forEach((track: any) => {
@@ -59,7 +49,6 @@ export class ConferenceData {
         });
       });
     });
-
     return this.data;
   }
 
@@ -86,7 +75,6 @@ export class ConferenceData {
         });
 
       });
-      console.log(day);
       return day;     
     });
   } 
@@ -96,7 +84,7 @@ export class ConferenceData {
     if (queryWords.length) {
       // of any query word is in the session name than it passes the query test
       queryWords.forEach((queryWord: string) => {
-        if (session.name.toLowerCase().indexOf(queryWord) > -1) {
+        if (session.name.toLowerCase().indexOf(queryWord) > -1 || session.description.toLowerCase().indexOf(queryWord) > -1 || session.speakerNames.toLowerCase().indexOf(queryWord) > -1) {
           matchesQueryText = true;
         }
       });
@@ -142,12 +130,6 @@ export class ConferenceData {
   getTracks() {
     return this.load().map((data: any) => {
       return data.tracks.sort();
-    });
-  }
-
-  getMap() {
-    return this.load().map((data: any) => {
-      return data.map;
     });
   }
 
