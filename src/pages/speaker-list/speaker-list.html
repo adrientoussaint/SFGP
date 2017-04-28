@@ -5,16 +5,19 @@
     </button>
     <ion-title>Conférencier</ion-title>
   </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" (ionInput)="getSpeaker($event)" placeholder="Rechercher ...">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="outer-content speaker-list">
   <ion-list>
     <ion-grid fixed>
       <ion-row align-items-stretch>
-
         <ion-col col-12 col-md-6 align-self-stretch align-self-center *ngFor="let speaker of speakers">
-
-          <ion-card class="speaker-card">
+         
+         <ion-card class="speaker-card">
             <ion-card-header align-center>
                   {{speaker.name}}
             </ion-card-header>

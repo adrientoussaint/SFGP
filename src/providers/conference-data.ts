@@ -126,6 +126,12 @@ export class ConferenceData {
       });
     });
   }
+  
+  getSponsors() {
+    return this.load().map((data: any) => {
+      return data.sponsors;
+    });
+  }
 
   getTracks() {
     return this.load().map((data: any) => {

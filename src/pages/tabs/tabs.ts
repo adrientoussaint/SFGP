@@ -6,7 +6,7 @@ import { AboutPage } from '../about/about';
 import { MapPage } from '../map/map';
 import { SchedulePage } from '../schedule/schedule';
 import { SpeakerListPage } from '../speaker-list/speaker-list';
-//import { QrPage } from '../qr/qr';
+import { SponsorPage } from '../sponsor/sponsor';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -17,7 +17,7 @@ export class TabsPage {
   tab2Root: any = SpeakerListPage;
   tab3Root: any = MapPage;
   tab4Root: any = AboutPage;
-  //tab5Root: any = QrPage;
+  tab5Root: any = SponsorPage;
   mySelectedIndex: number;
 
   constructor(navParams: NavParams) {

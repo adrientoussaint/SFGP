@@ -11,7 +11,7 @@ import { ConferenceData } from '../../providers/conference-data';
 })
 export class SpeakerListPage {
   actionSheet: ActionSheet;
-  speakers: any[] = [];
+  private speakers: any; 
 
   constructor(
     public actionSheetCtrl: ActionSheetController,
@@ -23,9 +23,26 @@ export class SpeakerListPage {
 
   ionViewDidLoad() {
     this.confData.getSpeakers().subscribe((speakers: any[]) => {
-      this.speakers = speakers;
+      this.speakers = speakers;  
     });
   }
+
+  
+  getSpeaker(ev: any) {
+    // Reset items back to all of the items
+    this.ionViewDidLoad();
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.speakers = this.speakers.filter((speaker : any) => {
+        return (speaker.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+  
   openContact(speaker: any) {
     let mode = this.config.get('mode');
 

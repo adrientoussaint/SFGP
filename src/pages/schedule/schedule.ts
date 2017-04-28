@@ -66,13 +66,8 @@ export class SchedulePage {
   }
     async scanBarcode(){
       const results = await this.barcode.scan();
-      alert(results);
-     /* function (results) {
-          alert("We got a barcode\n" +
-                "Result: " + results.text + "\n" +
-                "Format: " + results.format + "\n" +
-                "Cancelled: " + results.cancelled);
-      }*/
+      alert("Voici le lien vers cet abstract en ligne :\n"+
+            "Abstract :" + results.text +"\n");
   }
   changeDayIndex(index: any){
     this.dayIndex = index;

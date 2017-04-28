@@ -12,7 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-//import { QrPage } from '../pages/qr/qr';
+import { SponsorPage } from '../pages/sponsor/sponsor';
 import { MapPage } from '../pages/map/map';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
@@ -32,7 +32,7 @@ import { UserData } from '../providers/user-data';
   declarations: [
     ConferenceApp,
     AboutPage,
-   // QrPage,
+    SponsorPage,
     MapPage,
     SchedulePage,
     ScheduleFilterPage,
@@ -59,7 +59,7 @@ import { UserData } from '../providers/user-data';
         { component: AboutPage, name: 'About', segment: 'about' },
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
-        //{ component: QrPage, name: 'Qr', segment: 'qr' }
+        { component: SponsorPage, name: 'SponsorPage', segment: 'sponsor' }
       ]
     }),
     IonicStorageModule.forRoot()
@@ -68,7 +68,7 @@ import { UserData } from '../providers/user-data';
   entryComponents: [
     ConferenceApp,
     AboutPage,
-    //QrPage,
+    SponsorPage,
     MapPage,
     SchedulePage,
     ScheduleFilterPage,

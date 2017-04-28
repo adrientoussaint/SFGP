@@ -11,7 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
-//import { QrPage } from '../pages/qr/qr';
+import { SponsorPage } from '../pages/sponsor/sponsor';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -42,8 +42,9 @@ export class ConferenceApp {
     { title: 'Emploi du temps', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
     { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
-    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' },
-    //{ title: 'Scanner QRCode', name: 'TabsPage', component: TabsPage, tabComponent: QrPage, index: 4, icon: 'camera' }
+    { title: 'Sponsor', name: 'TabsPage', component: TabsPage, tabComponent: SponsorPage, index: 3, icon: 'pricetag' },
+    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 4, icon: 'information-circle' }
+    
   ];  
   rootPage: any;
 
