@@ -68,6 +68,6 @@ export class UserData {
     return this.storage.get(this.HAS_SEEN_TUTORIAL).then((value) => {
       return value;
     });
-  };
   
+  };
 }

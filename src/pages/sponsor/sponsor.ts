@@ -18,7 +18,7 @@ export class SponsorPage {
     public navCtrl: NavController,
     public confData: ConferenceData,
     public config: Config,
-    public inAppBrowser: InAppBrowser)
+    private iab: InAppBrowser)
     {}
 
     ionViewDidLoad() {
@@ -26,6 +26,10 @@ export class SponsorPage {
       this.sponsors = sponsors;
       console.log(sponsors);
     });
+  }
+  open(site :any){
+    const browser = this.iab.create(site, '_system');
+    browser.show();
   }
   
                                

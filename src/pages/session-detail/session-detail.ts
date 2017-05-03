@@ -9,12 +9,15 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 export class SessionDetailPage {
   
   session: any;
-  constructor(public navParams: NavParams, private browser: InAppBrowser,) {
+  constructor(public navParams: NavParams, private iab: InAppBrowser) {
     this.session = navParams.data.session;
-    this.browser = browser;
+    
   }
-  launch(url : any) {
-      this.browser.create(url, "_system", "location=true");
-        
-    }
+  
+  open(site :any){
+    let url = 'http://www.sfgp2017-nancy.com/_Abstracts/' + site + '.pdf'
+    const browser = this.iab.create(url, '_system');
+    browser.show();
+  }
+  
 }

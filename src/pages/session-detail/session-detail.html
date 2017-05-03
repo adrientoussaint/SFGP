@@ -20,12 +20,5 @@
     
   <h5><ion-icon name="medical"></ion-icon> Mots-clés :</h5>
   <p>{{session.description}}</p>
-  
-  <a href="http://www.sfgp2017-nancy.com/_Abstracts/{{session.id}}.pdf">
-    <!--<button ion-button (click)="launch('http://www.sfgp2017-nancy.com/_Abstracts/{{session.id}}.pdf')">Launch URL</button>-->
-
-    <h5><ion-icon name="albums"></ion-icon>
-        Abstract</h5>
-  </a>
-  
+  <button ion-button (click)="open(session.id)">Abstract</button>
 </ion-content>

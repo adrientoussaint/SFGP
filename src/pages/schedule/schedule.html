@@ -33,6 +33,7 @@
 </ion-header>
 
 <ion-content>
+
   <ion-toolbar no-border-top>
 		<ion-segment>
 		  <ion-segment-button value="j1" checked (click)="changeDayIndex(0)">
@@ -46,6 +47,7 @@
 		  </ion-segment-button>
 		</ion-segment>
     </ion-toolbar>
+<div *ngIf="segment === 'all'">
     <button ion-button icon value="s1" checked (click)="changeRoomIndex(0)">
       Salle 1
     </button>    
@@ -70,11 +72,11 @@
     <button ion-button icon value="s8" (click)="changeRoomIndex(7)">
       Salle 8
     </button>
+</div>
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 
     <ion-item-group *ngFor="let group of groups; let i = index" [hidden]="group.hide">
-			<div *ngIf="i===roomIndex">
-					
+				<div *ngIf="i===roomIndex && segment ==='all'">					
 				<ion-item-sliding *ngFor="let session of group.sessions"  #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
 					
 					<button ion-item text-wrap (click)="goToSessionDetail(session)">
@@ -84,19 +86,38 @@
 							{{session.timeEnd}}:
 							{{session.speakerNames}}
 						</p>
-					</button>
-	
+					</button>				
 					<ion-item-options>
-						<button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
+						<button ion-button color="favorite" (click)="addFavorite(slidingItem, session)">
 							Favoris
 						</button>
-						<button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
+					</ion-item-options>
+	
+				</ion-item-sliding>
+				</div>
+				<div *ngIf="segment ==='favorites'">					
+				<ion-item-sliding *ngFor="let session of group.sessions"  #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
+					
+					<button ion-item text-wrap (click)="goToSessionDetail(session)">
+						<h3>{{session.name}}</h3>
+						<p>
+							{{session.timeStart}} &mdash;
+							{{session.timeEnd}}:
+							{{session.speakerNames}} - 
+							{{session.location}}
+						</p>
+					</button>
+	      
+				
+					<ion-item-options>
+						<button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')">
 							Retirer
 						</button>
 					</ion-item-options>
 	
 				</ion-item-sliding>
-      </div>
+				</div>
+			
     </ion-item-group>
 
   </ion-list>

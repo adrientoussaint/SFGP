@@ -26,10 +26,10 @@
                 </ion-card-header>
                 <br/>
                 <ion-row padding>
-                  <ion-col col-12 col-lg-auto item-left>
-                      <ion-icon name="arrow-dropright-circle" color="primary"></ion-icon>
-                       <a [href]="spon.url">Site Web</a>                    
-                  </ion-col>
+                  <button ion-button (click)="open(spon.url)">
+                    <ion-icon name="arrow-dropright-circle"></ion-icon>
+                       Site Web
+                  </button>                       
                 </ion-row>
     
               </ion-card>

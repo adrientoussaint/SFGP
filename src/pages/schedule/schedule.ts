@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 
 import { ActionSheet, ActionSheetController, AlertController, App, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
 
+import { Storage } from '@ionic/storage';
+
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner'
 /*
   To learn how to use third party libs in an
@@ -47,8 +49,13 @@ export class SchedulePage {
     public confData: ConferenceData,
     public user: UserData,
     private barcode: BarcodeScanner,
-    public actionSheetCtrl: ActionSheetController
-  ) {}
+    public actionSheetCtrl: ActionSheetController,
+    public storage : Storage
+  ) {
+    this.storage.get('Favs').then((data) =>{
+        console.log('my data'+data);
+      });
+    }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
@@ -66,9 +73,18 @@ export class SchedulePage {
   }
     async scanBarcode(){
       const results = await this.barcode.scan();
-      alert("Voici le lien vers cet abstract en ligne :\n"+
-            "Abstract :" + results.text +"\n");
-  }
+      let alert = this.alertCtrl.create({
+        title: '<a href =' + results.text +'>Abstract</a>\n',
+        buttons: [{
+          text: 'OK'
+        }]
+      });
+      // now present the alert on top of all other content
+      alert.present();
+      //alert("Voici le lien vers cet abstract en ligne :\n"+
+            //"Abstract :" + results.text +"\n");
+  }  
+  
   changeDayIndex(index: any){
     this.dayIndex = index;
     this.updateSchedule();
@@ -101,8 +117,6 @@ export class SchedulePage {
     });
   }
   
-
-  
   addFavorite(slidingItem: ItemSliding, sessionData: any) {
 
     if (this.user.hasFavorite(sessionData.name)) {
@@ -112,6 +126,7 @@ export class SchedulePage {
     } else {
       // remember this session as a user favorite
       this.user.addFavorite(sessionData.name);
+      
 
       // create an alert instance
       let alert = this.alertCtrl.create({
@@ -126,7 +141,23 @@ export class SchedulePage {
       });
       // now present the alert on top of all other content
       alert.present();
+      console.log(sessionData);
     }
+    let data: any = [];
+    console.log(data);
+    this.storage.get('Favs').then((data) => {
+      if(data = null)
+      {
+        data.push(sessionData);
+        this.storage.set('Favs', data);
+      }
+      else
+      {
+        let array = [];
+        array.push(sessionData);
+        this.storage.set('Favs', array);
+      }
+    });
 
   }
 
