@@ -5,6 +5,9 @@ import { ActionSheet, ActionSheetController, AlertController, App, ItemSliding, 
 import { Storage } from '@ionic/storage';
 
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner'
+
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 /*
   To learn how to use third party libs in an
   Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
@@ -39,6 +42,7 @@ export class SchedulePage {
   shownSessions: any = [];
   groups: any = [];
   confDate: string;
+  favorite: boolean;
 
   constructor(
     public alertCtrl: AlertController,
@@ -50,18 +54,21 @@ export class SchedulePage {
     public user: UserData,
     private barcode: BarcodeScanner,
     public actionSheetCtrl: ActionSheetController,
-    public storage : Storage
-  ) {
-    this.storage.get('Favs').then((data) =>{
-        console.log('my data'+data);
-      });
-    }
+    public storage : Storage,
+    private iab: InAppBrowser
+  ) {}
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
     this.updateSchedule();
+    //this.storage.remove('Mes favoris');
   }
 
+  open(site :any){
+    const browser = this.iab.create(site, '_blank');
+    browser.show();
+  }
+  
   updateSchedule() {
     // Close any open sliding items when the schedule updates
     this.scheduleList && this.scheduleList.closeSlidingItems();
@@ -74,10 +81,15 @@ export class SchedulePage {
     async scanBarcode(){
       const results = await this.barcode.scan();
       let alert = this.alertCtrl.create({
-        title: '<a href =' + results.text +'>Abstract</a>\n',
-        buttons: [{
-          text: 'OK'
-        }]
+        title: 'Abstract\n',
+        buttons: [{ 
+          text: 'Voir',
+          handler:() =>{
+            open(results.text);
+          }
+        },{
+          text: 'Ok'
+          }]
       });
       // now present the alert on top of all other content
       alert.present();
@@ -141,21 +153,30 @@ export class SchedulePage {
       });
       // now present the alert on top of all other content
       alert.present();
-      console.log(sessionData);
+      
     }
-    let data: any = [];
-    console.log(data);
-    this.storage.get('Favs').then((data) => {
-      if(data = null)
+    /*if(this.storage.get('Mes favoris') != null){
+      this.storage.get('Mes favoris').then((val) => {
+        console.log('val avant + fav :'+val);
+        this.storage.set('Mes favoris', val).then((fav) => {
+          val = val + fav;
+          console.log('val après :'+val);
+          });
+        }); 
+    }else{
+    }
+    this.favorite = true;*/
+    this.storage.get('Mes favoris').then((data) => {
+      if(data != null)
       {
-        data.push(sessionData);
-        this.storage.set('Favs', data);
+        data.push(sessionData.id);
+        this.storage.set('Mes favoris', data);
       }
       else
       {
         let array = [];
-        array.push(sessionData);
-        this.storage.set('Favs', array);
+        array.push(sessionData.name);
+        this.storage.set('Mes favoris', array);
       }
     });
 
@@ -189,5 +210,20 @@ export class SchedulePage {
     });
     // now present the alert on top of all other content
     alert.present();
+    /*let i = index;
+    this.storage.get('Mes favoris').then((data) => {
+      if(data != null)
+      {
+        this.storage.remove(data[i]);
+        data.push(sessionData.name);
+        this.storage.set('Mes favoris', data);
+      }
+      else
+      {
+        let array = [];
+        array.push(sessionData.name);
+        this.storage.set('Mes favoris', array);
+      }
+    });*/
   }
 }

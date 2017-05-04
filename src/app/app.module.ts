@@ -23,6 +23,7 @@ import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
+import { LiensPage } from '../pages/liens/liens';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -42,7 +43,8 @@ import { UserData } from '../providers/user-data';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    LiensPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { UserData } from '../providers/user-data';
         { component: AboutPage, name: 'About', segment: 'about' },
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
-        { component: SponsorPage, name: 'SponsorPage', segment: 'sponsor' }
+        { component: SponsorPage, name: 'SponsorPage', segment: 'sponsor' },
+        { component: LiensPage, name: 'LiensPage', segment: 'liens' }
       ]
     }),
     IonicStorageModule.forRoot()
@@ -77,7 +80,8 @@ import { UserData } from '../providers/user-data';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    LiensPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

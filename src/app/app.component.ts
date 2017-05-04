@@ -12,6 +12,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { SponsorPage } from '../pages/sponsor/sponsor';
+import { LiensPage } from '../pages/liens/liens';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -43,8 +44,8 @@ export class ConferenceApp {
     { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
     { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
     { title: 'Sponsor', name: 'TabsPage', component: TabsPage, tabComponent: SponsorPage, index: 3, icon: 'pricetag' },
-    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 4, icon: 'information-circle' }
-    
+    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 4, icon: 'information-circle' },
+    { title: 'Liens utiles', name: 'TabsPage', component: TabsPage, tabComponent: LiensPage, index: 5, icon: 'done-all' }
   ];  
   rootPage: any;
 
@@ -79,6 +80,7 @@ export class ConferenceApp {
     this.enableMenu(true);
 
     this.listenToLoginEvents();
+    
   }
 
   openPage(page: PageInterface) {

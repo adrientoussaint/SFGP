@@ -16,6 +16,12 @@ export class UserData {
   ) {}
 
   hasFavorite(sessionName: string): boolean {
+    /*this.storage.get('Mes favoris').then((data) => {
+      if(data != null){
+        sessionName = data;
+       this._favorites.push(data);
+      }
+    });*/
     return (this._favorites.indexOf(sessionName) > -1);
   };
 
