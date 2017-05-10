@@ -12,7 +12,22 @@
     <img src="assets/img/lrgp.png" alt="lrgp logo">
   </div>
   <div padding class="about-info">
-    <h4 ><a href="http://lrgp-nancy.cnrs.fr/">Laboratoire de réactions et génie des procédés</a></h4>
+    <h4 (click)="open('http://lrgp-nancy.cnrs.fr/')">Laboratoire de Réactions et Génie des Procédés</h4>
+    <p>
+      Le Laboratoire Réactions et Génie des Procédés (LRGP), est une Unité Mixte de Recherche CNRS-UL (UMR 7274). Son objectif scientifique général concerne l’étude des procédés pris dans leur globalité et leur complexité. </p>
+
+<p>Le LRGP développe des connaissances scientifiques et technologiques nécessaires à la conception, l’étude, la conduite et l’optimisation des procédés complexes de transformation physico-chimiques et biologiques, de la matière et de l’énergie. </p>
+
+<p>Les recherches concernent le génie chimique dans son ensemble : étude des processus couplés de transfert de matière, de chaleur et d’écoulements, de la cinétique et de la thermodynamique, de la chimie-physique et de la biologie. Les interactions et les interdépendances complexes entre processus sont considérées aux différentes échelles spatio-temporelles. 
+</p>
+<p>Cette approche intégrative couvre un vaste domaine dimensionnel qui s’étend des petites aux grandes échelles. D’une part, les nano et micro échelles permettent une meilleure prise en compte des phénomènes locaux, en intégrant ou développant des approches très fondamentales de la physique, de la chimie quantique ou de la génomique. D’autre part, les grands systèmes considèrent l’échelle du réacteur, du procédé, de l’usine, voire du territoire. 
+    </p>
+  </div>
+   <div class="about-header">
+    <img src="assets/img/progepi.png" alt="lrgp logo">
+  </div>
+  <div padding class="about-info">
+    <h4 (click)="open('http://www.progepi.fr')">Progepi</h4>
     <p>
       The Ionic Conference is a one-day conference featuring talks from the
       Ionic team. It is focused on Ionic applications being built with
@@ -25,8 +40,8 @@
   </div>
   <div padding  class="about-info lol">
     <p>
-      Developpé par Adrien Toussaint.<br/>
-      Inspiré du thème <a href="https://github.com/driftyco/ionic-conference-app">Ionic Conference App</a> de Dryftico
+      Developpé par <a (click)="open('http://adrien-toussaint.esy.es')">Adrien Toussaint</a>.<br/>
+      Inspiré du thème <a (click)="open('https://github.com/driftyco/ionic-conference-app')">Ionic Conference App</a> de Dryftico
     </p>
   </div>
 </ion-content>

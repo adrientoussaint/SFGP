@@ -45,8 +45,11 @@ export class ConferenceApp {
     { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
     { title: 'Sponsor', name: 'TabsPage', component: TabsPage, tabComponent: SponsorPage, index: 3, icon: 'pricetag' },
     { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 4, icon: 'information-circle' },
-    { title: 'Liens utiles', name: 'TabsPage', component: TabsPage, tabComponent: LiensPage, index: 5, icon: 'done-all' }
-  ];  
+   
+  ];
+  loggedInPages: PageInterface[] = [
+    { title: 'Liens utiles', name: 'LiensPage', component: LiensPage, icon: 'done-all' }
+  ];
   rootPage: any;
 
   constructor(
@@ -125,7 +128,7 @@ export class ConferenceApp {
     });
 
     this.events.subscribe('user:logout', () => {
-      this.enableMenu(false);
+      this.enableMenu(true);
     });
   }
 

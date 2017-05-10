@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-navbar>
     <ion-buttons end *ngIf="showSkip">
-      <button ion-button (click)="startApp()" color="primary">Passer</button>
+     <!-- <button ion-button (click)="startApp()" color="primary">Passer</button>-->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -24,7 +24,11 @@
       <h2 class="slide-title" >Une application</h2>
       <p>Pour vous guidez sur le <b>congrès</b> et vous permettre d'accéder aux différents travaux réalisés.</p>
     </ion-slide>
-
+    <ion-slide>
+      <h2 class="slide-title" >Favoris</h2>
+      <img src="assets/img/tuto.png" class="slide-image owa"/>
+      <p>Vous pouvez ajouter des sessions à vos <b>favoris</b> en faisant glisser celle-ci vers la gauche</p>
+    </ion-slide>
     <ion-slide>
       <img src="assets/img/slide2.svg" class="slide-image"/>
       <h2 class="slide-title">Prêt pour le congrès ?</h2>

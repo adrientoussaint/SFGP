@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 /**
  * Generated class for the Liens page.
  *
@@ -14,11 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LiensPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Liens');
+    
   }
-
+ open(site :any){
+    const browser = this.iab.create(site, '_blank');
+    browser.show();
+  }
 }

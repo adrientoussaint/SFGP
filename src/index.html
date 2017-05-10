@@ -41,8 +41,20 @@
 
   <!-- The bundle js is generated during the build process -->
   <script src="build/main.js"></script>
-
-  <!-- google maps script is loaded last as to not block rendering -->
+  <!--firebase-->
+  <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDMCR98KLwIHe7pym7kyCi53uwS9HdpQAo",
+      authDomain: "sfgp2017-da0fb.firebaseapp.com",
+      databaseURL: "https://sfgp2017-da0fb.firebaseio.com",
+      projectId: "sfgp2017-da0fb",
+      storageBucket: "sfgp2017-da0fb.appspot.com",
+      messagingSenderId: "369240775562"
+    };
+    firebase.initializeApp(config);
+  </script>
 
 
 </body>

@@ -38,7 +38,7 @@ export class SpeakerListPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.speakers = this.speakers.filter((speaker : any) => {
-        return (speaker.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (speaker.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || speaker.description.toLowerCase().indexOf(val.toLowerCase()) > -1 || speaker.tracks[0].toLowerCase().indexOf(val.toLowerCase()) > -1 );
       })
     }
   }

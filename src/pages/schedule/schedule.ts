@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { ActionSheet, ActionSheetController, AlertController, App, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
+import { ActionSheet, ActionSheetController, AlertController, App, ItemSliding, List, ModalController, NavController, LoadingController, ToastController } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
 
@@ -20,6 +20,7 @@ import { UserData } from '../../providers/user-data';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 
+declare var firebase :any;
 
 @Component({
   selector: 'page-schedule',
@@ -43,9 +44,13 @@ export class SchedulePage {
   groups: any = [];
   confDate: string;
   favorite: boolean;
+  vote: any;
+  users:Array<Object> ;
+  _db: any;
 
   constructor(
     public alertCtrl: AlertController,
+    public toastCtrl: ToastController,
     public app: App,
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
@@ -56,7 +61,15 @@ export class SchedulePage {
     public actionSheetCtrl: ActionSheetController,
     public storage : Storage,
     private iab: InAppBrowser
-  ) {}
+  ) {
+     this.users=[]; 
+     this._db = firebase.database().ref('/vote/');
+      this._db.on('value', (dataSnapshot:any) => {
+        dataSnapshot.forEach((childSnapshot:any) => {
+          this.users.push(childSnapshot.val());
+        });
+      });
+  }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
@@ -75,20 +88,42 @@ export class SchedulePage {
 
     this.confData.getTimeline(this.dayIndex, this.roomIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
-      this.groups = data.groups;
-    });
+      this.groups = data.groups;      
+    });    
   }
+  
     async scanBarcode(){
       const results = await this.barcode.scan();
       let alert = this.alertCtrl.create({
-        title: 'Abstract\n',
-        buttons: [{ 
+        title: 'Que voulez vous faire avec cet Abstract ?\n',
+        buttons: [
+        {
+          text: 'Voter pour cet Abstract',
+          handler:() =>{
+            this.storage.get('avoter').then((data) =>{
+            if(data != true){
+            this._db.push({'title': results.text });
+            this.storage.set ('avoter', true)        
+            }
+            else
+            {
+            let toast= this.toastCtrl.create({
+              message: 'Vote non pris en compte, vous avez déjà voté !',
+              duration: 3000
+            });
+            toast.present();
+            }
+          });
+          }
+          },
+        { 
           text: 'Voir',
           handler:() =>{
             open(results.text);
           }
-        },{
-          text: 'Ok'
+        },
+        {
+          text: 'Quitter'
           }]
       });
       // now present the alert on top of all other content

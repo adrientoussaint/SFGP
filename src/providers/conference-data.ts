@@ -19,7 +19,7 @@ export class ConferenceData {
     if (this.data) {
       return Observable.of(this.data);
     } else {
-      return this.http.get('https://cdur-6ec32.firebaseio.com/.json')
+      return this.http.get('https://sfgp2017-da0fb.firebaseio.com/.json')
         .map(this.processData, this);
     }
   }
@@ -136,6 +136,12 @@ export class ConferenceData {
   getTracks() {
     return this.load().map((data: any) => {
       return data.tracks.sort();
+    });
+  }
+  
+  getVote(){
+    return this.load().map((data: any) => {
+      return data.vote;
     });
   }
 
