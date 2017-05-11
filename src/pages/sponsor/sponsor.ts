@@ -24,7 +24,6 @@ export class SponsorPage {
     ionViewDidLoad() {
     this.confData.getSponsors().subscribe((sponsors: any[]) => {
       this.sponsors = sponsors;
-      console.log(sponsors);
     });
   }
   open(site :any){

@@ -13,6 +13,7 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { SponsorPage } from '../pages/sponsor/sponsor';
 import { LiensPage } from '../pages/liens/liens';
+import { PosterPage } from '../pages/poster/poster';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -41,11 +42,12 @@ export class ConferenceApp {
   // the login page disables the left menu
   appPages: PageInterface[] = [
     { title: 'Emploi du temps', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
-    { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
-    { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
-    { title: 'Sponsor', name: 'TabsPage', component: TabsPage, tabComponent: SponsorPage, index: 3, icon: 'pricetag' },
-    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 4, icon: 'information-circle' },
-   
+    { title: 'Poster', name: 'TabsPage', component: TabsPage, tabComponent: PosterPage, index: 1, icon: 'document' },
+    { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 2, icon: 'contacts' },
+    { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 3, icon: 'map' },
+    { title: 'Sponsor', name: 'TabsPage', component: TabsPage, tabComponent: SponsorPage, index: 4, icon: 'pricetag' },
+    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 5, icon: 'information-circle' }
+    
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Liens utiles', name: 'LiensPage', component: LiensPage, icon: 'done-all' }

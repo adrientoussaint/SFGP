@@ -19,6 +19,10 @@
           <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
           {{p.title}}
         </button>
+        <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
+          <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
+          {{p.title}}
+        </button>
       </ion-list>     
 
       <ion-list>

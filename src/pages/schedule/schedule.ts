@@ -95,15 +95,20 @@ export class SchedulePage {
     async scanBarcode(){
       const results = await this.barcode.scan();
       let alert = this.alertCtrl.create({
-        title: 'Que voulez vous faire avec cet Abstract ?\n',
+        title: 'Que voulez vous faire avec ce poster ?\n',
         buttons: [
         {
-          text: 'Voter pour cet Abstract',
+          text: 'Voter pour ce poster',
           handler:() =>{
             this.storage.get('avoter').then((data) =>{
             if(data != true){
             this._db.push({'title': results.text });
-            this.storage.set ('avoter', true)        
+            this.storage.set ('avoter', true);
+            let toast= this.toastCtrl.create({
+              message: 'Votre vote a bien été enregistré.',
+              duration: 3000
+            });
+            toast.present();
             }
             else
             {
@@ -117,7 +122,7 @@ export class SchedulePage {
           }
           },
         { 
-          text: 'Voir',
+          text: 'Voir ce poster en ligne',
           handler:() =>{
             open(results.text);
           }

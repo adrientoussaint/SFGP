@@ -24,6 +24,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
 import { LiensPage } from '../pages/liens/liens';
+import { PosterPage } from '../pages/poster/poster';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -44,6 +45,7 @@ import { UserData } from '../providers/user-data';
     TabsPage,
     TutorialPage,
     SupportPage,
+    PosterPage,
     LiensPage
   ],
   imports: [
@@ -51,7 +53,7 @@ import { UserData } from '../providers/user-data';
     HttpModule,
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
-        { component: TabsPage, name: 'Tabs', segment: 'tabs' },
+        { component: TabsPage, name: 'TabsPage', segment: 'tabs' },
         { component: SchedulePage, name: 'Schedule', segment: 'schedule' },
         { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:name' },
         { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
@@ -62,6 +64,7 @@ import { UserData } from '../providers/user-data';
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
         { component: SponsorPage, name: 'SponsorPage', segment: 'sponsor' },
+        { component: PosterPage, name: 'PosterPage', segment: 'poster' },
         { component: LiensPage, name: 'LiensPage', segment: 'liens' }
       ]
     }),
@@ -72,6 +75,7 @@ import { UserData } from '../providers/user-data';
     ConferenceApp,
     AboutPage,
     SponsorPage,
+    PosterPage,
     MapPage,
     SchedulePage,
     ScheduleFilterPage,

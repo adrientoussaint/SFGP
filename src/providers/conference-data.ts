@@ -133,6 +133,12 @@ export class ConferenceData {
     });
   }
 
+  getPosters() {
+    return this.load().map((data: any) => {
+      return data.poster;
+    });
+  }
+  
   getTracks() {
     return this.load().map((data: any) => {
       return data.tracks.sort();
