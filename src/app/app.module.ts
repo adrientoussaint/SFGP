@@ -60,7 +60,7 @@ import { UserData } from '../providers/user-data';
         { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
         { component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:name' },
         { component: MapPage, name: 'Map', segment: 'map' },
-        { component: AboutPage, name: 'About', segment: 'about' },
+        { component: AboutPage, name: 'AboutPage', segment: 'about' },
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
         { component: SponsorPage, name: 'SponsorPage', segment: 'sponsor' },

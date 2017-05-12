@@ -44,13 +44,12 @@ export class ConferenceApp {
     { title: 'Emploi du temps', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Poster', name: 'TabsPage', component: TabsPage, tabComponent: PosterPage, index: 1, icon: 'document' },
     { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 2, icon: 'contacts' },
-    { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 3, icon: 'map' },
-    { title: 'Sponsor', name: 'TabsPage', component: TabsPage, tabComponent: SponsorPage, index: 4, icon: 'pricetag' },
-    { title: 'A propos', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 5, icon: 'information-circle' }
-    
+    { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 3, icon: 'map' }    
   ];
   loggedInPages: PageInterface[] = [
-    { title: 'Liens utiles', name: 'LiensPage', component: LiensPage, icon: 'done-all' }
+    { title: 'Sponsors', name: 'SponsorPage', component: SponsorPage, icon: 'pricetag' },
+    { title: 'Liens utiles', name: 'LiensPage', component: LiensPage, icon: 'done-all' },
+    { title: 'A propos', name: 'AboutPage', component: AboutPage, icon: 'information-circle' }
   ];
   rootPage: any;
 

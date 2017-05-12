@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Poster</ion-title>
   </ion-navbar>
 
@@ -15,14 +18,15 @@
 
 <ion-content padding>
   <ion-list class="poster" *ngFor="let poster of posters">         
-         <ion-item>
+         <ion-card>
+          
             <button ion-item text-wrap (click)="open(poster.id)">
-                  <h3>{{poster.titre}}</h3>
-                  <p text-wrap>
+                  <ion-card-header>{{poster.titre}}</ion-card-header>
+                  <ion-card-content>
                     {{poster.description}} &mdash;
                     {{poster.name}}
-                  </p>
+                 </ion-card-content>
             </button>
-          </ion-item>        
+          </ion-card>        
   </ion-list>
 </ion-content>
