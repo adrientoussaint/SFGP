@@ -27,8 +27,7 @@ export class SponsorPage {
     });
   }
   open(site :any){
-    const browser = this.iab.create(site, '_blank');
-    browser.show();
+    this.iab.create(site, '_system');
   }
   
                                

@@ -78,8 +78,7 @@ export class SchedulePage {
   }
 
   open(site :any){
-    const browser = this.iab.create(site, '_blank');
-    browser.show();
+    this.iab.create(site, '_system', 'location=yes');
   }
   
   updateSchedule() {
@@ -182,7 +181,7 @@ export class SchedulePage {
 
       // create an alert instance
       let alert = this.alertCtrl.create({
-        title: 'Favoris ajouté',
+        title: 'Favori ajouté',
         buttons: [{
           text: 'OK',
           handler: () => {
