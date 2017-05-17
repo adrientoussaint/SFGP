@@ -95,5 +95,13 @@
         "variables": {
             "CAMERA_USAGE_DESCRIPTION": "To scan barcodes"
         }
+    },
+    "com-sarriaroman-photoviewer": {
+        "source": {
+            "type": "registry",
+            "id": "com-sarriaroman-photoviewer"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

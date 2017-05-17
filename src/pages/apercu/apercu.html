@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Aperçu du Programme</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="apercu-page">
+  <ion-card (click)="Zoom(1)">
+    <ion-card-header>
+      Jour 1 :
+    </ion-card-header>
+    <ion-card-content>
+        <img  src="assets/img/edt/j1.jpg" alt="Jour 1"/>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      Jour 2 :
+    </ion-card-header>
+    <ion-card-content>
+        <img (click)="Zoom(2)" src="assets/img/edt/j2.jpg" alt="Jour 2"/>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Jour 3 :
+    </ion-card-header>
+    <ion-card-content>
+        <img (click)="Zoom(3)" src="assets/img/edt/j3.jpg" alt="Jour 3"/>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+

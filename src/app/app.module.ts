@@ -8,6 +8,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 import { IonicStorageModule } from '@ionic/storage';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 import { ConferenceApp } from './app.component';
 
@@ -25,6 +26,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
 import { LiensPage } from '../pages/liens/liens';
 import { PosterPage } from '../pages/poster/poster';
+import { ApercuPage } from '../pages/apercu/apercu';
+
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -46,6 +49,7 @@ import { UserData } from '../providers/user-data';
     TutorialPage,
     SupportPage,
     PosterPage,
+    ApercuPage,
     LiensPage
   ],
   imports: [
@@ -65,6 +69,7 @@ import { UserData } from '../providers/user-data';
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
         { component: SponsorPage, name: 'SponsorPage', segment: 'sponsor' },
         { component: PosterPage, name: 'PosterPage', segment: 'poster' },
+        { component: ApercuPage, name: 'ApercuPage', segment: 'apercu' },
         { component: LiensPage, name: 'LiensPage', segment: 'liens' }
       ]
     }),
@@ -85,6 +90,7 @@ import { UserData } from '../providers/user-data';
     TabsPage,
     TutorialPage,
     SupportPage,
+    ApercuPage,
     LiensPage
   ],
   providers: [
@@ -93,7 +99,8 @@ import { UserData } from '../providers/user-data';
     UserData,
     InAppBrowser,
     SplashScreen,
-    BarcodeScanner
+    BarcodeScanner,
+    PhotoViewer
   ]
 })
 export class AppModule { }

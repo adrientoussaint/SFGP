@@ -1,9 +1,9 @@
 $categories: (
- theme1: #AC282B,
- theme2: #8E8D93,
- theme3: #FE4C52,
- theme4: #FD8B2D,
- theme5: #FED035,
+ energie: #652e60,
+ produits-matériaux: #ab9ceb,
+ environnement: #b76abb,
+ bio-procédés: #ffd3be,
+ focus: #ffae82,
 );
 
 @function auxiliary-categories() {
@@ -16,5 +16,9 @@ page-schedule {
      border-left: 2px solid $value;
      padding-left: 10px;
    }
+  }
+  
+  .salle{
+    opacity: 0.5;
   }
 }

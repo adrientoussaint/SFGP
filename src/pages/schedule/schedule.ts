@@ -47,6 +47,7 @@ export class SchedulePage {
   vote: any;
   users:Array<Object> ;
   _db: any;
+  buttonclass:string = 's1';
 
   constructor(
     public alertCtrl: AlertController,

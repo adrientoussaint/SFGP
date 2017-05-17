@@ -14,6 +14,7 @@ import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { SponsorPage } from '../pages/sponsor/sponsor';
 import { LiensPage } from '../pages/liens/liens';
 import { PosterPage } from '../pages/poster/poster';
+import { ApercuPage } from '../pages/apercu/apercu';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -41,12 +42,13 @@ export class ConferenceApp {
   // the left menu only works after login
   // the login page disables the left menu
   appPages: PageInterface[] = [
-    { title: 'Emploi du temps', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
+    { title: 'Programme Scientifique', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Poster', name: 'TabsPage', component: TabsPage, tabComponent: PosterPage, index: 1, icon: 'document' },
     { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 2, icon: 'contacts' },
     { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 3, icon: 'map' }    
   ];
   loggedInPages: PageInterface[] = [
+    { title: 'Aperçu du programme', name: 'ApercuPage', component: ApercuPage, icon: 'compass' },
     { title: 'Sponsors', name: 'SponsorPage', component: SponsorPage, icon: 'pricetag' },
     { title: 'Liens utiles', name: 'LiensPage', component: LiensPage, icon: 'done-all' },
     { title: 'A propos', name: 'AboutPage', component: AboutPage, icon: 'information-circle' }

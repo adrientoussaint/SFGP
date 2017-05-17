@@ -36,40 +36,40 @@
 
   <ion-toolbar no-border-top>
 		<ion-segment>
-		  <ion-segment-button value="j1" checked (click)="changeDayIndex(0)">
-			Jour 1
+		  <ion-segment-button value="j1" ngSelected="selected" (click)="changeDayIndex(0)">
+			11 Juillet
 		  </ion-segment-button>
 		  <ion-segment-button value="j2" (click)="changeDayIndex(1)">
-			Jour 2
+			12 Juillet
 		  </ion-segment-button>
 		   <ion-segment-button value="j3" (click)="changeDayIndex(2)">
-			Jour 3
+			13 Juillet
 		  </ion-segment-button>
 		</ion-segment>
     </ion-toolbar>
 <div *ngIf="segment === 'all'">
-    <button ion-button icon value="s1" checked (click)="changeRoomIndex(0)">
+    <button ion-button icon value="s1" (click)="changeRoomIndex(0); buttonclass = 's1'" [ngClass]="buttonclass === 's1' ? 'selected' : 'salle'">
       Salle 1
     </button>    
-    <button ion-button icon value="s2" (click)="changeRoomIndex(1)">
+    <button ion-button icon value="s2" (click)="changeRoomIndex(1); buttonclass = 's2'" [ngClass]="buttonclass === 's2' ? 'selected' : 'salle'">
       Salle 2
     </button>
-    <button ion-button icon value="s3" (click)="changeRoomIndex(2)">
+    <button ion-button icon value="s3" (click)="changeRoomIndex(2); buttonclass = 's3'" [ngClass]="buttonclass === 's3' ? 'selected' : 'salle'">
       Salle 3
     </button>    
-    <button ion-button icon value="s4" (click)="changeRoomIndex(3)">
+    <button ion-button icon value="s4" (click)="changeRoomIndex(3); buttonclass = 's4'" [ngClass]="buttonclass === 's4' ? 'selected' : 'salle'">
       Salle 4
     </button>
-    <button ion-button icon value="s5" (click)="changeRoomIndex(4)">
+    <button ion-button icon value="s5" (click)="changeRoomIndex(4); buttonclass = 's5'" [ngClass]="buttonclass === 's5' ? 'selected' : 'salle'">
       Salle 5
     </button>    
-    <button ion-button icon value="s6" (click)="changeRoomIndex(5)">
+    <button ion-button icon value="s6" (click)="changeRoomIndex(5); buttonclass = 's6'" [ngClass]="buttonclass === 's6' ? 'selected' : 'salle'">
       Salle 6
     </button>
-    <button ion-button icon value="s7" (click)="changeRoomIndex(6)">
+    <button ion-button icon value="s7" (click)="changeRoomIndex(6); buttonclass = 's7'" [ngClass]="buttonclass === 's7' ? 'selected' : 'salle'">
       Salle 7
     </button>    
-    <button ion-button icon value="s8" (click)="changeRoomIndex(7)">
+    <button ion-button icon value="s8" (click)="changeRoomIndex(7); buttonclass = 's8'" [ngClass]="buttonclass === 's8' ? 'selected' : 'salle'">
       Salle 8
     </button>
 </div>
