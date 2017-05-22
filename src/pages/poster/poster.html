@@ -10,23 +10,48 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Poster</ion-title>
+    <ion-title>Posters</ion-title>
+    <ion-toolbar no-border-top>
+    <ion-searchbar color="primary" (ionInput)="getPoster($event)" placeholder="Rechercher ...">
+    </ion-searchbar>
+  </ion-toolbar>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list class="poster" *ngFor="let poster of posters">         
-         <ion-card>
-          
+  <div class="buttonpanel">
+    <button ion-button icon value="t1" (click)="changeThmIndex(0); buttonclass = 't1'" [ngClass]="buttonclass === 't1' ? 'selected' : 'salle'">
+      Energie
+    </button>    
+    <button ion-button icon value="t2" (click)="changeThmIndex(1); buttonclass = 't2'" [ngClass]="buttonclass === 't2' ? 'selected' : 'salle'">
+      Produits - Matériaux
+    </button>
+    <button ion-button icon value="t3" (click)="changeThmIndex(2); buttonclass = 't3'" [ngClass]="buttonclass === 't3' ? 'selected' : 'salle'">
+      Environnement
+    </button>    
+    <button ion-button icon value="t4" (click)="changeThmIndex(3); buttonclass = 't4'" [ngClass]="buttonclass === 't4' ? 'selected' : 'salle'">
+      Bio-procédés
+    </button>
+    <button ion-button icon value="t5" (click)="changeThmIndex(4); buttonclass = 't5'" [ngClass]="buttonclass === 't5' ? 'selected' : 'salle'">
+      Focus
+    </button>    
+  </div>
+  <ion-list class="poster" *ngFor="let thm of theme; let i = index">
+    <div *ngIf="i===thmIndex">
+      <div *ngFor="let poster of posters">
+        <ion-card>          
             <button ion-item text-wrap (click)="open(poster.id)">
                   <ion-card-header>{{poster.titre}}</ion-card-header>
                   <ion-card-content>
-                    {{poster.description}} &mdash;
-                    {{poster.name}}
+                    <b>{{poster.name}}</b>
+                    <br>
+                    {{poster.description}}                    
                  </ion-card-content>
             </button>
-          </ion-card>        
+        </ion-card>
+        </div>
+    </div>
   </ion-list>
 </ion-content>

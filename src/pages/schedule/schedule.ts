@@ -48,6 +48,7 @@ export class SchedulePage {
   users:Array<Object> ;
   _db: any;
   buttonclass:string = 's1';
+  segbuttonclass = 'j1';
 
   constructor(
     public alertCtrl: AlertController,
@@ -131,10 +132,7 @@ export class SchedulePage {
           text: 'Quitter'
           }]
       });
-      // now present the alert on top of all other content
-      alert.present();
-      //alert("Voici le lien vers cet abstract en ligne :\n"+
-            //"Abstract :" + results.text +"\n");
+      alert.present();      
   }  
   
   changeDayIndex(index: any){
@@ -178,7 +176,7 @@ export class SchedulePage {
     } else {
       // remember this session as a user favorite
       this.user.addFavorite(sessionData.name);
-      
+     // this.storage.set('Mes favoris', sessionData.name)
 
       // create an alert instance
       let alert = this.alertCtrl.create({

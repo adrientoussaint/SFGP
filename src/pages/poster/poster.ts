@@ -15,20 +15,46 @@ import { ConferenceData } from '../../providers/conference-data';
   templateUrl: 'poster.html',
 })
 export class PosterPage {
-  private posters: any;
+  private posters: any = [];
+  private theme: any;
+  public thmIndex = 0;
+  buttonclass:string = 't1';
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: ConferenceData, private iab: InAppBrowser) {
-  }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public confData: ConferenceData,
+              private iab: InAppBrowser) {}
 
   ionViewDidLoad() {
     this.confData.getPosters().subscribe((posters: any[]) => {
-      this.posters = posters;  
+      this.theme = posters;
+      this.posters = posters[this.thmIndex].poster
     });
+  }
+  
+  changeThmIndex(theme:any){
+    this.thmIndex=theme;
+    this.ionViewDidLoad();
   }
   
   open(site :any){
     let url = 'http://www.sfgp2017-nancy.com/_Abstracts/' + site + '.pdf'
     this.iab.create(url, '_system');
+  }
+  
+    getPoster(ev: any) {
+    // Reset items back to all of the items
+    this.ionViewDidLoad();
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.posters = this.posters.filter((poster : any) => {
+        return (poster.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || poster.description.toLowerCase().indexOf(val.toLowerCase()) > -1 || poster.titre.toLowerCase().indexOf(val.toLowerCase()) > -1 );
+      })
+    }
   }
 
 }

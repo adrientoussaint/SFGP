@@ -15,7 +15,7 @@
 
     <ion-buttons end>
 			<button ion-button (click) = "scanBarcode()">
-				<ion-icon name="camera"></ion-icon>
+				<ion-icon name="qr-scanner"></ion-icon>
 			</button>
       <button ion-button icon-only (click)="presentFilter()">
         <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
@@ -35,8 +35,8 @@
 <ion-content>
 
   <ion-toolbar no-border-top>
-		<ion-segment>
-		  <ion-segment-button value="j1" ngSelected="selected" (click)="changeDayIndex(0)">
+		<ion-segment [(ngModel)]="segbuttonclass">
+		  <ion-segment-button value="j1" (click)="changeDayIndex(0)">
 			11 Juillet
 		  </ion-segment-button>
 		  <ion-segment-button value="j2" (click)="changeDayIndex(1)">
@@ -84,7 +84,8 @@
 						<p>
 							{{session.timeStart}} &mdash;
 							{{session.timeEnd}}:
-							{{session.speakerNames}}
+							<b>{{session.speakerNames}} &mdash;
+							{{session.tracks[0]}} </b>
 						</p>
 					</button>				
 					<ion-item-options>

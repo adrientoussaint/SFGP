@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Events, MenuController, Nav, Platform } from 'ionic-angular';
+import { Events, MenuController, Nav, Platform, Config, ActionSheet, ActionSheetController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Storage } from '@ionic/storage';
@@ -34,6 +34,7 @@ export interface PageInterface {
   templateUrl: 'app.template.html'
 })
 export class ConferenceApp {
+  actionSheet: ActionSheet;
   // the root nav is a child of the root app component
   // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
@@ -43,9 +44,9 @@ export class ConferenceApp {
   // the login page disables the left menu
   appPages: PageInterface[] = [
     { title: 'Programme Scientifique', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
-    { title: 'Poster', name: 'TabsPage', component: TabsPage, tabComponent: PosterPage, index: 1, icon: 'document' },
-    { title: 'Conférencier', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 2, icon: 'contacts' },
-    { title: 'Carte', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 3, icon: 'map' }    
+    { title: 'Posters', name: 'TabsPage', component: TabsPage, tabComponent: PosterPage, index: 1, icon: 'document' },
+    { title: 'Conférenciers', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 2, icon: 'contacts' },
+    { title: 'Plan', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 3, icon: 'map' }    
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Aperçu du programme', name: 'ApercuPage', component: ApercuPage, icon: 'compass' },
@@ -62,9 +63,10 @@ export class ConferenceApp {
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public config : Config,
+    public actionSheetCtrl: ActionSheetController
   ) {
-
     // Check if the user has already seen the tutorial
     this.storage.get('hasSeenTutorial')
       .then((hasSeenTutorial) => {
@@ -87,6 +89,32 @@ export class ConferenceApp {
 
     this.listenToLoginEvents();
     
+  }
+  
+  openHelp() {
+    let mode = this.config.get('mode');
+
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Une requête ?',
+      buttons: [
+        {
+          text: `contact@progepi.fr`,
+          icon: mode !== 'ios' ? 'mail' : null,
+          handler: () => {
+            window.open('mailto:' + 'contact@progepi.fr');
+          }
+        },
+        {
+          text: '+33.372.74.38.88',
+          icon: 'call',
+          handler: () => {
+            window.open('tel:' + '+33372743888')
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
   }
 
   openPage(page: PageInterface) {

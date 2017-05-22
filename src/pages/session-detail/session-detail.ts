@@ -16,7 +16,7 @@ export class SessionDetailPage {
   
   open(site :any){
     let url = 'http://www.sfgp2017-nancy.com/_Abstracts/' + site + '.pdf'
-    this.iab.create(url, '_system', 'location=yes');
+    this.iab.create(url, '_blank', 'location=yes');
   }
   
 }
