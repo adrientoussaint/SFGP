@@ -27,7 +27,7 @@ import { SupportPage } from '../pages/support/support';
 import { LiensPage } from '../pages/liens/liens';
 import { PosterPage } from '../pages/poster/poster';
 import { ApercuPage } from '../pages/apercu/apercu';
-
+import { EventPage } from '../pages/event/event';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -50,7 +50,8 @@ import { UserData } from '../providers/user-data';
     SupportPage,
     PosterPage,
     ApercuPage,
-    LiensPage
+    LiensPage,
+    EventPage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +71,8 @@ import { UserData } from '../providers/user-data';
         { component: SponsorPage, name: 'SponsorPage', segment: 'sponsor' },
         { component: PosterPage, name: 'PosterPage', segment: 'poster' },
         { component: ApercuPage, name: 'ApercuPage', segment: 'apercu' },
-        { component: LiensPage, name: 'LiensPage', segment: 'liens' }
+        { component: LiensPage, name: 'LiensPage', segment: 'liens' },
+        { component: EventPage, name: 'EventPage', segment: 'event'}
       ]
     }),
     IonicStorageModule.forRoot()
@@ -91,7 +93,8 @@ import { UserData } from '../providers/user-data';
     TutorialPage,
     SupportPage,
     ApercuPage,
-    LiensPage
+    LiensPage,
+    EventPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

@@ -15,6 +15,7 @@ import { SponsorPage } from '../pages/sponsor/sponsor';
 import { LiensPage } from '../pages/liens/liens';
 import { PosterPage } from '../pages/poster/poster';
 import { ApercuPage } from '../pages/apercu/apercu';
+import { EventPage } from '../pages/event/event';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -50,6 +51,7 @@ export class ConferenceApp {
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Aperçu du programme', name: 'ApercuPage', component: ApercuPage, icon: 'compass' },
+    { title: 'Evènements', name: 'EventPage', component: EventPage, icon: 'alert' },
     { title: 'Sponsors', name: 'SponsorPage', component: SponsorPage, icon: 'pricetag' },
     { title: 'Liens utiles', name: 'LiensPage', component: LiensPage, icon: 'done-all' },
     { title: 'A propos', name: 'AboutPage', component: AboutPage, icon: 'information-circle' }

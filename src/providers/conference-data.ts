@@ -138,26 +138,12 @@ export class ConferenceData {
       return data.posters;
     });
   }
- /* getPost(thmIndex:number) {
+
+   getEvents() {
     return this.load().map((data: any) => {
-      return data.posters.poster[thmIndex];
+      return data.event;
     });
-  }*/
-  
- /* getPosters(data:any) {
-    this.data=data.json();
-    this.data.posters.forEach((thm:any) =>{
-          thm.poster.forEach((post:any) =>{
-            post=infos;
-            console.log('Voici infos : 'infos);
-            });
-          });
-    console.log(this.data);
-    
-      return this.data;
-   
-    }*/
-  
+  }
  
   getTracks() {
     return this.load().map((data: any) => {

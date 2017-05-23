@@ -1,0 +1,23 @@
+page-event {
+    .date{
+       text-align: center;
+       font-size:150%;
+    }
+    .titre{
+        text-decoration:underline;
+        font-size: 120%;
+    }
+    
+    .tutoriel{
+        border-left: 3px solid #811553;
+    }
+    
+    .autre{
+        border-left: 3px solid #fccd09;
+    }
+    
+    .pause{
+        border-left: 3px solid #3b5942;
+    }
+    
+}
