@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Events, MenuController, Nav, Platform, Config, ActionSheet, ActionSheetController } from 'ionic-angular';
+import { Events, MenuController, Nav, Platform, Config, ActionSheet, ActionSheetController, AlertController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { Storage } from '@ionic/storage';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 import { AboutPage } from '../pages/about/about';
 import { MapPage } from '../pages/map/map';
@@ -67,7 +67,9 @@ export class ConferenceApp {
     public storage: Storage,
     public splashScreen: SplashScreen,
     public config : Config,
-    public actionSheetCtrl: ActionSheetController
+    public actionSheetCtrl: ActionSheetController,
+    public alertCtrl: AlertController,
+    public push: Push
   ) {
     // Check if the user has already seen the tutorial
     this.storage.get('hasSeenTutorial')
@@ -90,8 +92,41 @@ export class ConferenceApp {
     this.enableMenu(true);
 
     this.listenToLoginEvents();
-    
+    this.pushsetup();
   }
+  
+  pushsetup(){
+    const options: PushOptions = {
+     android: {
+         senderID: '1020279157241'
+     },
+     ios: {
+         alert: 'true',
+         badge: true,
+         sound: 'false'
+     },
+     windows: {}
+  };
+ 
+  const pushObject: PushObject = this.push.init(options);
+ 
+  pushObject.on('notification').subscribe((notification: any) => {
+    if (notification.additionalData.foreground) {
+      let youralert = this.alertCtrl.create({
+        title: 'Bonjour',
+        message: notification.message
+      });
+      youralert.present();
+    }
+  });
+ 
+  pushObject.on('registration').subscribe((registration: any) => {
+    console.log(registration.registrationId);
+  });
+ 
+  pushObject.on('error').subscribe(error => console.log('Error with Push plugin' + error));
+  }
+  
   
   openHelp() {
     let mode = this.config.get('mode');

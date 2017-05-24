@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 import { IonicStorageModule } from '@ionic/storage';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { Push } from '@ionic-native/push';
 
 import { ConferenceApp } from './app.component';
 
@@ -103,7 +104,8 @@ import { UserData } from '../providers/user-data';
     InAppBrowser,
     SplashScreen,
     BarcodeScanner,
-    PhotoViewer
+    PhotoViewer,
+    Push
   ]
 })
 export class AppModule { }
